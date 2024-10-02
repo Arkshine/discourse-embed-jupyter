@@ -1,6 +1,9 @@
 source_url:
   type: string
   default: ""
+source_token:
+  type: string
+  default: ""
 iframe_height:
   type: string
   default: 600px

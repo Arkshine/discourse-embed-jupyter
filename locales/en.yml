@@ -3,6 +3,7 @@ en:
     description: "Embeds a Jupyter URL."
     settings:
       source_url: "Jupyter base URL."
+      source_token: "Jupyter token appended to the URL"
       iframe_height: "Default height of the iframe."
       composer_icon_location: "Location of the icon in the composer."
 

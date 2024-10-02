@@ -41,8 +41,13 @@ export default apiInitializer("1.13.0", (api) => {
       jupyterElement.dataset.processed = true;
       jupyterElement.setAttribute("id", jupyterId);
 
+      let url = `${settings.source_url}/${jupyterElement.dataset.codePath}.ipynb`;
+      if (settings.source_token) {
+        url = `${url}?token=${settings.source_token}`;
+      }
+
       const iframe = document.createElement("iframe");
-      iframe.src = `${settings.source_url}/${jupyterElement.dataset.codePath}.ipynb`;
+      iframe.src = url;
       iframe.width = "100%";
       iframe.height = jupyterElement.style.height || settings.iframe_height;
       iframe.style.border = "1px solid var(--primary-400)";
