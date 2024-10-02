@@ -1,5 +1,9 @@
 en:
   theme_metadata:
-    description: ''
+    description: "Embeds a Jupyter URL."
     settings:
-      example_setting: A description of a setting.
+      source_url: "Jupyter base URL."
+      iframe_height: "Default height of the iframe."
+      composer_icon_location: "Location of the icon in the composer."
+
+  insert_jupyter: "Embed Jupyter URL"

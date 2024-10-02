@@ -1,2 +1,13 @@
-example_setting:
-  default: true
+source_url:
+  type: string
+  default: ""
+iframe_height:
+  type: string
+  default: 600px
+composer_icon_location:
+  type: enum
+  default: toolbar
+  choices:
+    - toolbar
+    - popup menu
+    - both
