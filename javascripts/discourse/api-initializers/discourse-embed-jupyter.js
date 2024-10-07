@@ -12,21 +12,6 @@ export default apiInitializer("1.13.0", (api) => {
       return;
     }
 
-    jupyterElements.forEach((jupyterElement) => {
-      if (jupyterElement.dataset.processed) {
-        return;
-      }
-
-      const spinner = document.createElement("div");
-      spinner.classList.add("spinner");
-
-      if (jupyterElement.dataset.codeHeight) {
-        jupyterElement.style.height = `${jupyterElement.dataset.codeHeight}px`;
-      }
-
-      jupyterElement.replaceChildren(spinner);
-    });
-
     jupyterElements.forEach((jupyterElement, index) => {
       if (jupyterElement.dataset.processed) {
         return;
@@ -36,6 +21,10 @@ export default apiInitializer("1.13.0", (api) => {
 
       if (!jupyterElement.dataset.codePath) {
         return;
+      }
+
+      if (jupyterElement.dataset.codeHeight) {
+        jupyterElement.style.height = `${jupyterElement.dataset.codeHeight}px`;
       }
 
       jupyterElement.dataset.processed = true;
@@ -51,14 +40,8 @@ export default apiInitializer("1.13.0", (api) => {
       iframe.width = "100%";
       iframe.height = jupyterElement.style.height || settings.iframe_height;
       iframe.style.border = "1px solid var(--primary-400)";
-      iframe.classList.add("hidden");
 
-      jupyterElement.append(iframe);
-
-      iframe.onload = () => {
-        jupyterElement.querySelector(".spinner")?.remove();
-        iframe.classList.remove("hidden");
-      };
+      jupyterElement.innerHTML = iframe.outerHTML;
     });
   }
 
